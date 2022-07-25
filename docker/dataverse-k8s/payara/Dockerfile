@@ -9,6 +9,7 @@ FROM payara/server-full:5.2021.1-jdk11
 LABEL maintainer="FDM FZJ <forschungsdaten@fz-juelich.de>, DANS <vyacheslav.tykhonov@dans.knaw.nl>"
 
 ARG VERSION=5.10
+ARG warFileLocation=https://github.com/DataverseNO/dataverse/releases/download/v5.11.3.b/dataverse-5.11.3.b.war
 ARG DOMAIN=domain1
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -65,6 +66,7 @@ RUN cd ${HOME_DIR} && \
     wget --no-verbose -O dvinstall.zip ${DATAVERSE_PKG} && \
     unzip -qq dvinstall.zip -d ./ && \
     rm dvinstall.zip && \
+    wget --no-verbose ${warFileLocation} -O ${HOME_DIR}/dvinstall/dataverse.war && \
     ln -s ${HOME_DIR}/dvinstall/dataverse.war ${DEPLOY_DIR}/dataverse.war && \
     find . -iname "custom*.tsv" -delete
 
