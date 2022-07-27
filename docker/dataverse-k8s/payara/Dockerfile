@@ -8,8 +8,9 @@ FROM payara/server-full:5.2021.1-jdk11
 #FROM payara/server-full:5.2022.2-jdk11
 LABEL maintainer="FDM FZJ <forschungsdaten@fz-juelich.de>, DANS <vyacheslav.tykhonov@dans.knaw.nl>"
 
-ARG VERSION=5.10
-ARG warFileLocation=https://github.com/DataverseNO/dataverse/releases/download/v5.11.3.b/dataverse-5.11.3.b.war
+ARG VERSION=5.11
+ARG WARVERSION=5.11.9
+ARG warFileLocation=https://github.com/DataverseNO/dataverse/releases/download/V${WARVERSION}/dataverse-${WARVERSION}.war
 ARG DOMAIN=domain1
 
 ENV DEBIAN_FRONTEND=noninteractive
