@@ -35,7 +35,9 @@ RUN mkdir -p ${HOME_DIR} ${SCRIPT_DIR} ${SECRETS_DIR} && \
 
 # Install prerequisites
 RUN apt-get -qq update && \
-    apt-get -qqy install postgresql-client jq imagemagick curl wget unzip vim awscli python3-psycopg2 ed bc original-awk python3-pandas lsb-release patch cron
+    apt-get -qqy install postgresql-client jq imagemagick curl wget unzip vim awscli python3.8 python3-distutils python3-apt  python3-psycopg2 ed bc original-awk python3-pandas lsb-release patch cron
+RUN wget --no-verbose  https://bootstrap.pypa.io/get-pip.py -O -|/usr/bin/python3.8
+
 
 # Install Azure CLI
 RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
@@ -76,4 +78,4 @@ COPY --chown=payara:payara docker/dataverse-k8s/bin/* docker/dataverse-k8s/payar
 RUN chmod +x ${SCRIPT_DIR}/*
 WORKDIR ${HOME_DIR}/dvinstall
 RUN crontab -l | { cat; echo "0 0 1 * * /bin/bash /opt/payara/init.d/cronjob/actionlog/actionlogrecord.sh"; } | crontab -
-CMD cron
+#CMD cron
