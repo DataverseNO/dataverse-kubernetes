@@ -1,0 +1,2 @@
+echo "0 0 1 * * /bin/bash /opt/payara/init.d/cronjob/actionlog/actionlogrecord.sh"
+echo "0 1 * * * /bin/bash /opt/payara/init.d/cronjob/makedatacount.sh"

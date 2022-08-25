@@ -75,7 +75,10 @@ RUN cd ${HOME_DIR} && \
 
 # Copy across docker scripts
 COPY --chown=payara:payara docker/dataverse-k8s/bin/* docker/dataverse-k8s/payara/bin/*.sh ${SCRIPT_DIR}/
+COPY  docker/dataverse-k8s/payara/crontab.jobs /opt/payara/
 RUN chmod +x ${SCRIPT_DIR}/*
 WORKDIR ${HOME_DIR}/dvinstall
-RUN crontab -l | { cat; echo "0 0 1 * * /bin/bash /opt/payara/init.d/cronjob/actionlog/actionlogrecord.sh"; } | crontab -
+#RUN chown payara:payara /tmp/crontab.jobs
+RUN crontab -l | { cat; /opt/payara/crontab.jobs; } | crontab -
+RUN crontab -l
 #CMD cron
