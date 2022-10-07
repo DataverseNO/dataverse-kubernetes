@@ -9,6 +9,9 @@ clone this repository and create bracnch
 
 ``git branch <branch name>``
 
+Check upgrant instructions for sql comands
+
+
 in Dockerfile
 -------------
 
@@ -17,5 +20,3 @@ change (exemples):
 payara/server-full: 5.2022.3-jdk11
 
 VERSION=5.12
-
- warFileLocation=https://github.com/IQSS/dataverse/releases/download/v5.12/dataverse-5.12.war
