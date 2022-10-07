@@ -12,10 +12,10 @@ clone this repository and create bracnch
 in Dockerfile
 -------------
 
-change:
+change (exemples):
 
-payara/server-full:
+payara/server-full: 5.2022.3-jdk11
 
-VERSION=
+VERSION=5.12
 
- warFileLocation=
+ warFileLocation=https://github.com/IQSS/dataverse/releases/download/v5.12/dataverse-5.12.war
