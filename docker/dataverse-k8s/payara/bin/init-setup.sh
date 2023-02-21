@@ -93,7 +93,12 @@ if [ "${INIT_SCRIPTS_FOLDER}" ]; then
            bash "$initscript"
         done
 fi
-touch ${PAYARA_DIR}/glassfish/domains/${DOMAIN_NAME}/applications/dataverse/.reload
+#declare -p -x > /tmp/.env
+#su - payara
+#source /tmp/.env
+#rm  /tmp/.env
+#touch ${PAYARA_DIR}/glassfish/domains/${DOMAIN_NAME}/applications/dataverse/.reload
+#exit
 sleep 15
 
 if [ "${INIT_SCRIPTS_FOLDER}" ]; then

@@ -59,6 +59,13 @@ echo $COMMAND | tr ' ' '\n'
 echo
 
 # Run the server in foreground - read master password from variable or file or use the default "changeit" password
+if [ "${INIT_SCRIPTS_FOLDER}" ]; then
+    for initscript in $INIT_SCRIPTS_FOLDER/2*
+        do
+           bash "$initscript"
+        done
+fi
+touch ${PAYARA_DIR}/glassfish/domains/${DOMAIN_NAME}/applications/dataverse/.reload
 
 set +x
 if test "$AS_ADMIN_MASTERPASSWORD"x = x -a -f "$PASSWORD_FILE"
